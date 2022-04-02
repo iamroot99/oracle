@@ -41,10 +41,10 @@ def index():
 
 		if guess.isnumeric() and int(guess) == actual:
 			data = f"""
-				<h4> The earth shatters as <b>The Oracle</b> hisses and explodes into a bright light. You close your eyes until you feel the blinding light fade away. <b> The Oracle </b> has dissapeared and left a flag behind. </h4>
+				<h4> The earth shatters around you as <b>The Oracle</b> hisses and explodes into a bright light. You close your eyes until you feel the blinding light fade away. <b> The Oracle </b> has dissapeared and left a flag behind. </h4>
 				<h4>
 				{flag} </br> 
-				<b>The Oracle</b> has been defeated! </h4>"""
+				<b>The Oracle</b> has been defeated! GG! </h4>"""
 			return generate_page(data)
 		else:
 			data = f'''
@@ -62,7 +62,7 @@ def index():
 def login():
 	if request.method == 'POST':
 		session['password'] = request.form['password']
-		random.seed(session['REDACTED_FOR_PRIVACY'])
+		# removed unsafe custom seed
 		session['stuff'] = random.sample(range(10000, 1000000000), 10)
 
 		return redirect(url_for('index'))
